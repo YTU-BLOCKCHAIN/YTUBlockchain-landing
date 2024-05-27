@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "welcome": "Yildiz Blockchain'e Hoşgeldiniz",
+    "description": "ana sayfa."
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, tr {🇹🇷 Turkish} en {🇺🇸 English} other {Unknown}}"
+  }
+}
