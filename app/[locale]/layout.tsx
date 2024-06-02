@@ -19,11 +19,13 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`flex flex-col ${inter.className}`}>
+      <body
+        className={`flex flex-col ${inter.className}  dark:bg-gray-900 bg-gray-100`}
+      >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class">
             <NavBar />
-            <div className="py-4 my-20 px-4">{children}</div>
+            <div className=" my-[78px] ">{children}</div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
