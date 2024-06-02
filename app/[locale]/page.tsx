@@ -12,7 +12,7 @@ export default function Index({ params: { locale } }: Props) {
   const t = useTranslations("HomePage");
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
+    <main className="flex min-h-screen flex-col items-center justify-center">
       <div className="text-center mt-16">
         <h1 className="text-5xl font-extrabold text-blue-800">
           {t("welcome")}
