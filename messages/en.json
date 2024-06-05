@@ -2,7 +2,8 @@
   "Navbar": {
     "Events": "Events",
     "Education": "Education",
-    "Content": "Content"
+    "Content": "Content",
+    "Doc": "Docs"
   },
   "HomePage": {
     "welcome": "Welcome to Yildiz Blockchain",

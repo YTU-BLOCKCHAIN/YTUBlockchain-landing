@@ -5,35 +5,85 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import DarkModeToggle from "../DarkModeToggle";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
 const linkVariants = {
   hover: {
     y: -2,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-    },
+    transition: { type: "spring", stiffness: 300 },
   },
 };
 
-const Navbar: React.FC = () => {
-  const locale = useLocale();
+const navData = [
+  { href: "/", textKey: "Events", basePath: false },
+  { href: "/education", textKey: "Education", basePath: true },
+  { href: "/", textKey: "Content", basePath: false },
+  {
+    href: "https://www.notion.so/your-notion-page",
+    textKey: "Doc",
+    external: true,
+  },
+];
+
+const NavbarLink = ({
+  navItem,
+  basePath,
+  onClick,
+}: {
+  navItem: any;
+  basePath: string;
+  onClick: React.MouseEventHandler<HTMLAnchorElement>;
+}) => {
   const t = useTranslations("Navbar");
+  return (
+    <motion.div
+      key={navItem.textKey}
+      variants={linkVariants}
+      whileHover="hover"
+    >
+      <Link
+        href={navItem.basePath ? `${basePath}${navItem.href}` : navItem.href}
+        className={`relative group text-gray-800 dark:text-gray-200 ${
+          navItem.external
+            ? "text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"
+            : ""
+        }`}
+        target={navItem.external ? "_blank" : "_self"}
+        onClick={onClick}
+      >
+        {t(navItem.textKey)}
+        {!navItem.external && (
+          <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
+        )}
+      </Link>
+    </motion.div>
+  );
+};
+
+const Navbar = () => {
   const pathname = usePathname();
   const basePath = pathname.split("/").slice(0, 2).join("/");
+  const [show, setShow] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+    document.body.style.overflow = show ? "auto" : "hidden";
+  };
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleLinkClick = () => {
+    setShow(false);
+    document.body.style.overflow = "auto";
   };
 
   return (
-    <div className="fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 lg:dark:bg-zinc-800/30 md:px-12 px-4">
+    <div className="fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 lg:dark:bg-zinc-800/30 md:px-12 px-4">
       <div className="flex flex-row justify-between w-full">
-        <Link href={`${basePath}`} className="flex items-center">
+        <Link
+          href={`${basePath}`}
+          className="flex items-center"
+          onClick={handleLinkClick}
+        >
           <Image
             src="/YTUBC.png"
             alt="YTUBC Logo"
@@ -42,55 +92,26 @@ const Navbar: React.FC = () => {
             priority
           />
         </Link>
-        <div className="hidden lg:flex items-center space-x-4">
-          <motion.div variants={linkVariants} whileHover="hover">
-            <Link
-              // href={`${basePath}/events`}
-              href="/"
-              className="relative group text-gray-800 dark:text-gray-200"
-            >
-              {t("Events")}
-              <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-            </Link>
-          </motion.div>
-          <motion.div variants={linkVariants} whileHover="hover">
-            <Link
-              href={`${basePath}/education`}
-              className="relative group text-gray-800 dark:text-gray-200"
-            >
-              {t("Education")}
-              <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-            </Link>
-          </motion.div>
-          <motion.div variants={linkVariants} whileHover="hover">
-            <Link
-              // href={`${basePath}/content`}
-              href="/"
-              className="relative group text-gray-800 dark:text-gray-200"
-            >
-              {t("Content")}
-              <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-            </Link>
-          </motion.div>
-          <div className="ml-4">
-            <Link
-              href="https://www.notion.so/your-notion-page"
-              className="relative group text-gray-800 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"
-            >
-              Doc
-            </Link>
-          </div>
+        <div className="hidden sm:flex items-center space-x-4">
+          {navData.map((navItem) => (
+            <NavbarLink
+              key={navItem.textKey}
+              navItem={navItem}
+              basePath={basePath}
+              onClick={handleLinkClick}
+            />
+          ))}
           <LocaleSwitcher />
           <DarkModeToggle />
         </div>
-        <div className="lg:hidden flex items-center">
+        <div className="sm:hidden flex items-center z-[9999]">
           <button
-            onClick={toggleMenu}
+            onClick={handleShow}
             className="text-gray-800 dark:text-gray-200 focus:outline-none"
           >
             <motion.div
               initial={{ rotate: 0 }}
-              animate={{ rotate: isOpen ? 90 : 0 }}
+              animate={{ rotate: show ? 90 : 0 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <svg
@@ -104,46 +125,49 @@ const Navbar: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+                  d={show ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
                 ></path>
               </svg>
             </motion.div>
           </button>
         </div>
       </div>
-      {isOpen && (
-        <div className="lg:hidden flex flex-col items-center space-y-4 mt-4">
-          <Link
-            href={`${basePath}/events`}
-            className="relative group text-gray-800 dark:text-gray-200"
-          >
-            {t("Events")}
-            <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-          </Link>
-          <Link
-            href={`${basePath}/education`}
-            className="relative group text-gray-800 dark:text-gray-200"
-          >
-            {t("Education")}
-            <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-          </Link>
-          <Link
-            href={`${basePath}/content`}
-            className="relative group text-gray-800 dark:text-gray-200"
-          >
-            {t("Content")}
-            <span className="block h-1 w-1 bg-blue-500 rounded-full absolute bottom-0 left-1/2 transform translate-y-2 -translate-x-1/2 transition-opacity duration-300 opacity-0 group-hover:opacity-100"></span>
-          </Link>
-          <Link
-            href="https://www.notion.so/your-notion-page"
-            className="relative group text-gray-800 dark:text-gray-200 text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"
-          >
-            Doc
-          </Link>
-          <LocaleSwitcher />
-          <DarkModeToggle />
+
+      <div
+        className={`fixed top-0 right-0 bottom-0 flex justify-center items-center w-full h-[100dvh] text-center transition-all ease-linear overflow-hidden duration-300 ${
+          show
+            ? "dark:bg-[#121212] bg-[#d3d3d4] z-[100] sm:bg-opacity-95 bg-opacity-100 backdrop-blur-3xl"
+            : "right-[-100%] dark:bg-[#121212] bg-[#F3F4F6] z-[100]"
+        }`}
+      >
+        <div className="h-full w-full flex flex-col items-center">
+          <div className="flex flex-col justify-center gap-y-[32px] items-center h-full">
+            {navData.map((navItem, index) => (
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2, delay: 0.1 * index }}
+                key={navItem.textKey}
+              >
+                <NavbarLink
+                  navItem={navItem}
+                  basePath={basePath}
+                  onClick={handleLinkClick}
+                />
+              </motion.div>
+            ))}
+            <motion.div
+              className="flex flex-col items-center gap-4"
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2, delay: 0.4 }}
+            >
+              <LocaleSwitcher />
+              <DarkModeToggle />
+            </motion.div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

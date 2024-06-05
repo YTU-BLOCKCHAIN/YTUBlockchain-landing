@@ -11,8 +11,8 @@ const SchedulePage = () => {
           <Image
             src={EventImage}
             alt="Blockchain"
-            layout="fill"
-            objectFit="cover"
+            fill
+            object-fit="cover"
             quality={75}
           />
         </div>

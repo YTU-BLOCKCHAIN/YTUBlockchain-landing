@@ -2,7 +2,8 @@
   "Navbar": {
     "Events": "Etkinlikler",
     "Education": "Eğitim",
-    "Content": "İçerik"
+    "Content": "İçerik",
+    "Doc": "Docs"
   },
   "HomePage": {
     "welcome": "Yildiz Blockchain'e Hoşgeldiniz",
