@@ -4,7 +4,7 @@ import ClubLogo from "@/public/YTUBC.png";
 import EventImage from "@/public/event.png";
 const SchedulePage = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="bg-gray-100 dark:bg-zinc-700 text-gray-900 dark:text-white">
       {/* Hero Section */}
       <section className="relative bg-[#050259] text-white py-16">
         <div className="absolute inset-0 opacity-30">

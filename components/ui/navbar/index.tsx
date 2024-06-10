@@ -73,10 +73,14 @@ const Navbar = () => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
         const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY) {
-          setIsVisible(false);
+        if (currentScrollY > 100) {
+          if (currentScrollY > lastScrollY) {
+            setIsVisible(false);
+          } else {
+            setIsVisible(true);
+          }
         } else {
-          setIsVisible(true);
+          setIsVisible(true); // Always show when scroll is less than 100px
         }
         setLastScrollY(currentScrollY);
       }
@@ -106,9 +110,8 @@ const Navbar = () => {
     setShow(false);
     document.body.style.overflow = "auto";
   };
-
   return (
-    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 lg:dark:bg-zinc-800/30 md:px-12 px-4">
+    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 md:px-12 px-4">
       <div className="flex flex-row justify-between w-full">
         <Link
           href={`${basePath}`}

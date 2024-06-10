@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
 import GitHubIconWhite from "@/public/github-mark-white.png";
 import GitHubIconBlack from "@/public/github-mark.png";
@@ -9,6 +10,7 @@ import { useTranslations } from "next-intl";
 import { Locale, format, parse } from "date-fns";
 import { enUS, tr } from "date-fns/locale";
 import AddCalendar from "@/public/addCalendar.png";
+
 type Class = {
   date: string;
   time: string;
@@ -21,59 +23,30 @@ type Class = {
   tech: string;
 };
 
-const classes: Class[] = [
-  {
-    date: "2024-06-03",
-    time: "10:00 AM",
-    duration: "1 hour",
-    topic: "Introduction to Blockchain",
-    instructor: "Atahan Yildirim",
-    instructorImage: "https://via.placeholder.com/40",
-    githubLink: "https://github.com/johndoe/blockchain-intro",
-    isUpcoming: true,
-    tech: "Blockchain",
-  },
-  {
-    date: "2024-06-10",
-    time: "2:00 PM",
-    duration: "1.5 hours",
-    topic: "Smart Contracts",
-    instructor: "Atahan Yildirim",
-    instructorImage: "https://via.placeholder.com/40",
-    githubLink: "https://github.com/janesmith/smart-contracts",
-    isUpcoming: true,
-    tech: "Blockchain",
-  },
-  {
-    date: "2024-05-10",
-    time: "11:00 AM",
-    duration: "2 hours",
-    topic: "Decentralized Applications",
-    instructor: "Atahan Yildirim",
-    instructorImage: "https://via.placeholder.com/40",
-    githubLink: "https://github.com/alicejohnson/dapps",
-    isUpcoming: false,
-    tech: "Blockchain",
-  },
-  {
-    date: "2024-05-03",
-    time: "1:00 PM",
-    duration: "1 hour",
-    topic: "Blockchain Security",
-    instructor: "Atahan Yildirim",
-    instructorImage: "https://via.placeholder.com/40",
-    githubLink: "https://github.com/bobbrown/blockchain-security",
-    isUpcoming: false,
-    tech: "Blockchain",
-  },
-  // dummy
-];
-
 const Schedule: React.FC = () => {
   const t = useTranslations("Classes");
   const [filter, setFilter] = useState<"upcoming" | "past" | "all">("upcoming");
-
+  const [classes, setClasses] = useState<Class[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const locale = t("locale") === "tr" ? tr : enUS;
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      try {
+        const response = await axios.get(
+          "http://3.91.191.152:5001/api/classes"
+        );
+        setClasses(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError("Error fetching classes");
+        console.error("Error fetching classes", error);
+        setLoading(false);
+      }
+    };
+    fetchClasses();
+  }, []);
 
   const filteredClasses = classes.filter((cls) => {
     if (filter === "all") return true;
@@ -83,6 +56,35 @@ const Schedule: React.FC = () => {
   const handleFilterChange = (newFilter: "upcoming" | "past" | "all") => {
     setFilter(newFilter);
   };
+
+  if (loading) {
+    return (
+      <div className="max-w-6xl mx-auto space-y-4">
+        <div className="h-12 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
+        {[...Array(5)].map((_, index) => (
+          <div key={index} className="space-y-2">
+            <div className="h-8 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
+            <div className="h-6 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
+            <div className="h-6 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div
+          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
+          <strong className="font-bold">Error: </strong>
+          <span className="block sm:inline">{error}</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full p-4">
@@ -112,10 +114,10 @@ const FilterButtons: React.FC<{
     {["upcoming", "past", "all"].map((filterType) => (
       <button
         key={filterType}
-        className={`px-4 py-4 w-full border-b border-t border-r dark:border-gray-700 border-gray-300 ${
+        className={`px-4 py-4 w-full border dark:border-zinc-600 border-zinc-300 ${
           filter === filterType
-            ? "dark:bg-gray-700 bg-gray-300"
-            : "dark:bg-gray-800 bg-white"
+            ? "dark:bg-zinc-700 bg-zinc-300"
+            : "dark:bg-zinc-800 bg-white"
         }`}
         onClick={() =>
           onFilterChange(filterType as "upcoming" | "past" | "all")
@@ -132,12 +134,12 @@ const ClassTable: React.FC<{
   locale: Locale;
   t: any;
 }> = ({ classes, locale, t }) => (
-  <table className="min-w-full bg-white dark:bg-gray-900 border dark:border-gray-700 border-gray-300">
+  <table className="min-w-full bg-white dark:bg-zinc-900 border dark:border-zinc-600 border-zinc-300">
     <tbody>
       {classes.map((cls, index) => (
         <React.Fragment key={index}>
-          <tr className="border-b dark:border-gray-700 border-gray-300">
-            <td className="dark:bg-gray-700 bg-gray-300 p-4" colSpan={2}>
+          <tr className="border-b dark:border-zinc-600 border-zinc-300">
+            <td className="dark:bg-zinc-700 bg-zinc-300 p-4" colSpan={2}>
               {format(new Date(cls.date), "EEE, MMMM d", { locale })}
             </td>
           </tr>
@@ -180,8 +182,8 @@ const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
   };
 
   return (
-    <tr className="border-b dark:border-gray-700 border-gray-300">
-      <td className="px-4 py-2 border-r dark:border-gray-700 border-gray-300 text-center">
+    <tr className="border-b dark:border-zinc-600 border-zinc-300">
+      <td className="px-4 py-2 border-r dark:border-zinc-600 border-zinc-300 text-center">
         <div className="text-sm dark:text-gray-400 text-gray-600">
           {cls.time} - {cls.duration} -{" "}
           <span className="font-bold">EFF104</span>
