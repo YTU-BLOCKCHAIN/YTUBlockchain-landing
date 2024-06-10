@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.2.10",
+    "gsap": "^3.12.5",
     "hamburger-react": "^2.5.1",
     "next": "14.2.3",
     "next-intl": "^3.14.1",

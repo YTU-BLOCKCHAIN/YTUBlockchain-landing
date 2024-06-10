@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import DarkModeToggle from "../DarkModeToggle";
-import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import DarkModeToggle from "../DarkModeToggle";
+import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
 
 const linkVariants = {
   hover: {
@@ -65,6 +66,36 @@ const Navbar = () => {
   const pathname = usePathname();
   const basePath = pathname.split("/").slice(0, 2).join("/");
   const [show, setShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window !== "undefined") {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+        setLastScrollY(currentScrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    if (isVisible) {
+      gsap.to(".navbar", { y: 0, duration: 0.5, ease: "power1.inOut" });
+    } else {
+      gsap.to(".navbar", { y: "-100%", duration: 0.5, ease: "power1.inOut" });
+    }
+  }, [isVisible]);
 
   const handleShow = () => {
     setShow(!show);
@@ -77,7 +108,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 lg:dark:bg-zinc-800/30 md:px-12 px-4">
+    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 lg:dark:bg-zinc-800/30 md:px-12 px-4">
       <div className="flex flex-row justify-between w-full">
         <Link
           href={`${basePath}`}
