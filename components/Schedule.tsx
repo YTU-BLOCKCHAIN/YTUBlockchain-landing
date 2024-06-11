@@ -35,7 +35,7 @@ const Schedule: React.FC = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://${process.env.NEXT_PUBLIC_API_HOST}:${process.env.NEXT_PUBLIC_API_PORT}/api/classes`
+          `https://${process.env.NEXT_PUBLIC_API_HOST}:${process.env.NEXT_PUBLIC_API_PORT}/api/classes`
         );
         setClasses(response.data);
         setLoading(false);
