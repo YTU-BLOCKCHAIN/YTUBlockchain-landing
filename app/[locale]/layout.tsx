@@ -14,19 +14,17 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body
-        className={`flex flex-col ${inter.className}  dark:bg-zinc-700 bg-gray-100`}
+        className={`flex flex-col ${inter.className} dark:bg-zinc-700 bg-gray-100`}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class">
             <NavBar />
-            <div className=" my-[78px] ">{children}</div>
+            <div className="my-[78px]">{children}</div>
             <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>

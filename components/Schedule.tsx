@@ -4,7 +4,6 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import GitHubIconWhite from "@/public/github-mark-white.png";
 import GitHubIconBlack from "@/public/github-mark.png";
-import Atahan from "@/public/atahan.png";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Locale, format, parse } from "date-fns";
@@ -33,9 +32,10 @@ const Schedule: React.FC = () => {
 
   useEffect(() => {
     const fetchClasses = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
-          "http://3.91.191.152:5001/api/classes"
+          `http://${process.env.NEXT_PUBLIC_API_HOST}:${process.env.NEXT_PUBLIC_API_PORT}/api/classes`
         );
         setClasses(response.data);
         setLoading(false);
@@ -196,11 +196,15 @@ const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
               {cls.topic}
             </div>
             <div className="flex items-center mt-2">
-              <Image
-                src={Atahan}
-                alt="Instructor"
-                className="w-7 h-7 rounded-full mr-2"
-              />
+              {cls.instructorImage && (
+                <Image
+                  src={cls.instructorImage}
+                  alt="Instructor"
+                  className="w-7 h-7 rounded-full mr-2"
+                  width={50}
+                  height={50}
+                />
+              )}
               <div className="text-gray-700 dark:text-gray-300 font-medium">
                 {cls.instructor}
               </div>
