@@ -3,7 +3,9 @@
     "Events": "Etkinlikler",
     "Education": "Eğitim",
     "Content": "İçerik",
-    "Doc": "Docs"
+    "Doc": "Docs",
+    "login": "Giriş Yap",
+    "dashboard": "Panel"
   },
   "HomePage": {
     "welcome": "Yildiz Blockchain'e Hoşgeldiniz",

@@ -4,6 +4,8 @@ import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Footer from "@/components/ui/footer";
+import { AuthProvider } from "@/context/AuthContext";
+import { NextUIProvider } from "@nextui-org/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +21,18 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`flex flex-col ${inter.className} dark:bg-zinc-700 bg-gray-100`}
+        className={`flex flex-col ${inter.className} dark:bg-zinc-900 bg-gray-100`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class">
-            <NavBar />
-            <div className="my-[78px]">{children}</div>
-            <Footer />
-          </ThemeProvider>
+          <NextUIProvider>
+            <ThemeProvider attribute="class">
+              <AuthProvider>
+                <NavBar />
+                <div className="my-[78px]">{children}</div>
+                <Footer locale={locale} />
+              </AuthProvider>
+            </ThemeProvider>
+          </NextUIProvider>
         </NextIntlClientProvider>
       </body>
     </html>

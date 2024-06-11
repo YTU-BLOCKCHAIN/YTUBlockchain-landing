@@ -1,7 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  locale: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ locale }) => {
   return (
     <div
       className="relative h-[300px]"
@@ -13,13 +17,13 @@ const Footer: React.FC = () => {
             <div className="flex flex-col md:flex-row gap-10">
               <div className="flex flex-col gap-2">
                 <h3 className="mb-2 uppercase">Navigation</h3>
-                <Link href="/">
+                <Link href={locale + "/"}>
                   <p className="hover:underline">Home</p>
                 </Link>
-                <Link href="/events">
+                <Link href={locale + "/events"}>
                   <p className="hover:underline">Events</p>
                 </Link>
-                <Link href="/education">
+                <Link href={locale + "/education"}>
                   <p className="hover:underline">Education</p>
                 </Link>
               </div>

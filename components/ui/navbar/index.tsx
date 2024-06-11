@@ -8,6 +8,15 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import DarkModeToggle from "../DarkModeToggle";
 import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
+import { useAuth } from "@/context/AuthContext";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const linkVariants = {
   hover: {
@@ -20,11 +29,6 @@ const navData = [
   { href: "/", textKey: "Events", basePath: false },
   { href: "/education", textKey: "Education", basePath: true },
   { href: "/", textKey: "Content", basePath: false },
-  {
-    href: "https://www.notion.so/your-notion-page",
-    textKey: "Doc",
-    external: true,
-  },
 ];
 
 const NavbarLink = ({
@@ -68,6 +72,8 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const { isLoggedIn, logout } = useAuth();
+  const t = useTranslations("Navbar");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -136,6 +142,50 @@ const Navbar = () => {
               onClick={handleLinkClick}
             />
           ))}
+          {isLoggedIn ? (
+            <Dropdown>
+              <DropdownTrigger>
+                <Button variant="bordered">
+                  {t("dashboard")}
+                  <ChevronDownIcon className="w-4 h-4" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="edit">
+                  <a
+                    href={`${basePath}/admin`}
+                    className="text-gray-800 dark:text-gray-200"
+                    onClick={handleLinkClick}
+                  >
+                    Go to Dashboard
+                  </a>
+                </DropdownItem>
+                <DropdownItem
+                  key="delete"
+                  className="text-danger"
+                  color="danger"
+                  onClick={logout}
+                >
+                  Log Out
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : (
+            <NavbarLink
+              navItem={{ href: basePath + "/login", textKey: "login" }}
+              basePath={basePath}
+              onClick={handleLinkClick}
+            />
+          )}
+
+          <Link
+            href="https://www.notion.so/your-notion-page"
+            className={`relative group text-gray-800 dark:text-gray-200 "text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"`}
+            target="_blank"
+          >
+            {t(`Doc`)}
+          </Link>
+
           <LocaleSwitcher />
           <DarkModeToggle />
         </div>
@@ -192,11 +242,53 @@ const Navbar = () => {
               </motion.div>
             ))}
             <motion.div
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-y-[32px]"
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.2, delay: 0.4 }}
             >
+              {isLoggedIn ? (
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button variant="bordered">
+                      {t("dashboard")}
+                      <ChevronDownIcon className="w-4 h-4" />
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="Static Actions">
+                    <DropdownItem key="edit">
+                      <a
+                        href={`${basePath}/admin`}
+                        className="text-gray-800 dark:text-gray-200"
+                        onClick={handleLinkClick}
+                      >
+                        Go to Dashboard
+                      </a>
+                    </DropdownItem>
+                    <DropdownItem
+                      key="delete"
+                      className="text-danger"
+                      color="danger"
+                      onClick={logout}
+                    >
+                      Log Out
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              ) : (
+                <NavbarLink
+                  navItem={{ href: basePath + "/login", textKey: "login" }}
+                  basePath={basePath}
+                  onClick={handleLinkClick}
+                />
+              )}
+              <Link
+                href="https://www.notion.so/your-notion-page"
+                className={`relative group text-gray-800 dark:text-gray-200 "text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"`}
+                target="_blank"
+              >
+                {t(`Doc`)}
+              </Link>
               <LocaleSwitcher />
               <DarkModeToggle />
             </motion.div>

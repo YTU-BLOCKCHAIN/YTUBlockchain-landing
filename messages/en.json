@@ -3,7 +3,9 @@
     "Events": "Events",
     "Education": "Education",
     "Content": "Content",
-    "Doc": "Docs"
+    "Doc": "Docs",
+    "login": "Login",
+    "dashboard": "Dashboard"
   },
   "HomePage": {
     "welcome": "Welcome to Yildiz Blockchain",
