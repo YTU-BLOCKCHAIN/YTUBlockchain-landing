@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "../../../context/AuthContext";
 import AddClassForm from "../../../components/AddClassForm";
 import EditClassForm from "../../../components/EditClassForm";
+import { motion } from "framer-motion";
 
 const AdminPage = () => {
   const { token } = useAuth();
@@ -26,7 +27,9 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-zinc-800 p-8 flex flex-col items-center justify-center">
       <div className="flex space-x-4 mb-8 justify-center">
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className={`px-4 py-2 rounded-lg ${
             activeTab === "add"
               ? "bg-blue-500 text-white"
@@ -35,8 +38,10 @@ const AdminPage = () => {
           onClick={() => setActiveTab("add")}
         >
           Add Class
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
           className={`px-4 py-2 rounded-lg ${
             activeTab === "edit"
               ? "bg-blue-500 text-white"
@@ -45,7 +50,7 @@ const AdminPage = () => {
           onClick={() => setActiveTab("edit")}
         >
           Edit Class
-        </button>
+        </motion.button>
       </div>
       <div className="w-full max-w-6xl bg-white dark:bg-zinc-900 shadow-md rounded-lg p-8">
         <div className="flex flex-col space-y-8">

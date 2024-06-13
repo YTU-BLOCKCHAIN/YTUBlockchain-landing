@@ -110,10 +110,14 @@ const EditClassForm: React.FC = () => {
     }
   };
 
+  const handleCancelEdit = () => {
+    setSelectedClass(null);
+  };
+
   return (
     <div className="bg-white dark:bg-zinc-800 shadow-md rounded-lg p-8">
       {loading && !selectedClass && (
-        <div className="space-y-6">
+        <div className="space-y-6 h-screen">
           {[...Array(8)].map((_, index) => (
             <div key={index} className="space-y-2">
               <div className="h-11 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
@@ -122,12 +126,11 @@ const EditClassForm: React.FC = () => {
         </div>
       )}
       <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
-        Update a Class
+        Edit {selectedClass ? selectedClass.topic : "Classes"}
       </h2>
       {error && <p className="text-red-500">{error}</p>}
       {selectedClass ? (
         <form onSubmit={handleSave} className="space-y-6">
-          <h2 className="text-2xl font-bold text-center mb-6">Edit Class</h2>
           <FormField
             label="Date"
             type="date"
@@ -224,6 +227,13 @@ const EditClassForm: React.FC = () => {
               onClick={() => handleDeleteClick(selectedClass!)}
             >
               {loading ? <ClipLoader color="#ffffff" size={20} /> : "Delete"}
+            </button>
+            <button
+              type="button"
+              className="w-full py-2 px-4 ml-4 bg-gray-600 text-white font-bold rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400 flex justify-center items-center"
+              onClick={handleCancelEdit}
+            >
+              Cancel
             </button>
           </div>
         </form>
