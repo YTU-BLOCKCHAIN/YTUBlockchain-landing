@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { unstable_setRequestLocale } from "next-intl/server";
-import Schedule from "@/components/Schedule";
 
 type Props = {
   params: { locale: string };
