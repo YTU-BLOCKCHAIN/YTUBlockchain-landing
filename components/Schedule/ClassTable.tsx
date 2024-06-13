@@ -9,7 +9,7 @@ const ClassTable: React.FC<{
   locale: Locale;
   t: any;
 }> = ({ classes, locale, t }) => (
-  <table className="min-w-full bg-white dark:bg-zinc-900 border dark:border-zinc-600 border-zinc-300">
+  <table className="min-w-full bg-white dark:bg-zinc-900 border dark:border-zinc-700 border-zinc-300">
     <tbody>
       {classes.map((cls, index) => (
         <React.Fragment key={index}>

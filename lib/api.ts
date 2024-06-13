@@ -28,7 +28,7 @@ const dummyClasses = [
     tech: "React, JavaScript",
   },
   {
-    date: "2024-07-14",
+    date: "2024-05-14",
     time: "10:00 AM",
     duration: "2 hours",
     topic: "Introduction to Blockchain",
@@ -40,6 +40,28 @@ const dummyClasses = [
   },
   {
     date: "2024-06-04",
+    time: "12:00 PM",
+    duration: "1 hour",
+    topic: "Advanced React",
+    instructor: "Jane Smith",
+    instructorImage:
+      "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718075712286_YTUBC.png",
+    githubLink: "https://github.com/instructor/repo",
+    tech: "React, JavaScript",
+  },
+  {
+    date: "2024-05-03",
+    time: "10:00 AM",
+    duration: "2 hours",
+    topic: "Introduction to Blockchain",
+    instructor: "John Doe",
+    instructorImage:
+      "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718066507048_Pesonal%20Picture.png",
+    githubLink: "https://github.com/instructor/repo",
+    tech: "Blockchain, Ethereum",
+  },
+  {
+    date: "2024-12-28",
     time: "12:00 PM",
     duration: "1 hour",
     topic: "Advanced React",

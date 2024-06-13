@@ -9,6 +9,7 @@ import ClassTable from "./ClassTable";
 import LoadingState from "./LoadingState";
 import ErrorState from "./ErrorState";
 import { Class } from "./types";
+import { parseISO, isBefore, isAfter } from "date-fns";
 
 const Schedule: React.FC = () => {
   const t = useTranslations("Classes");
@@ -23,7 +24,10 @@ const Schedule: React.FC = () => {
       setLoading(true);
       try {
         const data = await fetchClasses();
-        setClasses(data);
+        const sortedData = data.sort((a: Class, b: Class) =>
+          parseISO(a.date) > parseISO(b.date) ? 1 : -1
+        );
+        setClasses(sortedData);
         setLoading(false);
       } catch (error) {
         setError("Error fetching classes");
@@ -35,8 +39,12 @@ const Schedule: React.FC = () => {
   }, []);
 
   const filteredClasses = classes.filter((cls) => {
+    const classDate = parseISO(cls.date);
+    const currentDate = new Date();
     if (filter === "all") return true;
-    return filter === "upcoming" ? cls.isUpcoming : !cls.isUpcoming;
+    return filter === "upcoming"
+      ? isAfter(classDate, currentDate)
+      : isBefore(classDate, currentDate);
   });
 
   const handleFilterChange = (newFilter: "upcoming" | "past" | "all") => {
