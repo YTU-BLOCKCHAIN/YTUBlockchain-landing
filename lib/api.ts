@@ -122,3 +122,18 @@ export const fetchClasses = async () => {
     return dummyClasses;
   }
 };
+
+export const updateClass = async (classId: string, classData: any) => {
+  const response = await axios.put(
+    `http://${API_HOST}:${API_PORT}/api/classes/${classId}`,
+    classData
+  );
+  return response.data;
+};
+
+export const deleteClass = async (classId: string) => {
+  const response = await axios.delete(
+    `http://${API_HOST}:${API_PORT}/api/classes/${classId}`
+  );
+  return response.data;
+};

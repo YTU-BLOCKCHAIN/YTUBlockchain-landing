@@ -1,4 +1,5 @@
 export type Class = {
+  _id: string;
   date: string;
   time: string;
   duration: string;
@@ -8,6 +9,7 @@ export type Class = {
   githubLink: string;
   tech: string;
   ClassLocation?: string;
+  createdAt: string;
 };
 
 export type FormFieldProps = {
