@@ -153,7 +153,7 @@ const Navbar = () => {
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem key="edit">
                   <a
-                    href={`${basePath}/admin`}
+                    href={`${basePath}/team`}
                     className="text-gray-800 dark:text-gray-200"
                     onClick={handleLinkClick}
                   >
@@ -258,7 +258,7 @@ const Navbar = () => {
                   <DropdownMenu aria-label="Static Actions">
                     <DropdownItem key="edit">
                       <a
-                        href={`${basePath}/admin`}
+                        href={`${basePath}/team`}
                         className="text-gray-800 dark:text-gray-200"
                         onClick={handleLinkClick}
                       >

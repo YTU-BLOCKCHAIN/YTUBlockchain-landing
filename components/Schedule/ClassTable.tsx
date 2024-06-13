@@ -2,7 +2,7 @@ import React from "react";
 import { format } from "date-fns";
 import { Locale } from "date-fns";
 import ClassRow from "./ClassRow";
-import { Class } from "./types";
+import { Class } from "../../types/types";
 
 const ClassTable: React.FC<{
   classes: Class[];

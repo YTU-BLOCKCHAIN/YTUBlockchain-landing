@@ -4,7 +4,7 @@ import { parse, format, parseISO, isAfter } from "date-fns";
 import GitHubIconWhite from "@/public/github-mark-white.png";
 import GitHubIconBlack from "@/public/github-mark.png";
 import AddCalendar from "@/public/addCalendar.png";
-import { Class } from "./types";
+import { Class } from "../../types/types";
 
 const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
   const addToGoogleCalendar = (cls: Class) => {
@@ -46,13 +46,15 @@ const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
       <td className="px-4 py-2 border-r dark:border-zinc-600 border-zinc-300 text-center  w-1/4">
         <div className="text-sm dark:text-gray-400 text-gray-600">
           {cls.time} - {cls.duration} -{" "}
-          <span className="font-bold">EFF104</span>
+          <span className="font-bold">
+            {cls.ClassLocation ? cls.ClassLocation : "EEF104"}
+          </span>
         </div>
       </td>
       <td className="px-4 py-2  w-3/4">
-        <div className="flex flex-col md:flex-row items-start md:items-center">
+        <div className="flex flex-row items-center">
           <div className="flex-grow">
-            <div className="font-bold text-lg text-black dark:text-white">
+            <div className="font-bold text-sm md:text-lg text-black dark:text-white">
               {cls.topic}
             </div>
             <div className="flex items-center mt-2">
@@ -65,7 +67,7 @@ const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
                   height={50}
                 />
               )}
-              <div className="text-gray-700 dark:text-gray-300 font-medium">
+              <div className="text-gray-700 dark:text-gray-300 font-medium text-sm md:text-lg">
                 {cls.instructor}
               </div>
             </div>

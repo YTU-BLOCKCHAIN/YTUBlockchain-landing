@@ -7,8 +7,8 @@ import { enUS, tr } from "date-fns/locale";
 import FilterButtons from "./FilterButtons";
 import ClassTable from "./ClassTable";
 import LoadingState from "./LoadingState";
-import ErrorState from "./ErrorState";
-import { Class } from "./types";
+import ErrorMessage from "../Common/ErrorMessage";
+import { Class } from "../../types/types";
 import { parseISO, isBefore, isAfter } from "date-fns";
 
 const Schedule: React.FC = () => {
@@ -53,7 +53,7 @@ const Schedule: React.FC = () => {
 
   if (loading) return <LoadingState />;
 
-  if (error) return <ErrorState error={error} />;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <div className="w-full p-4">

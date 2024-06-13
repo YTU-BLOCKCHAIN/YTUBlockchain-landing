@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (token) {
-      router.push(`/${locale}/admin`);
+      router.push(`/${locale}/team`);
     }
   }, [token, router, locale]);
 
@@ -23,7 +23,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await login(username, password);
-      router.push(`/${locale}/admin`);
+      router.push(`/${locale}/team`);
     } catch (err) {
       setError("Invalid username or password");
     }
@@ -51,7 +51,7 @@ const LoginPage = () => {
             </p>
             <p>
               If you are not redirected automatically, click{" "}
-              <a href={`/${locale}/admin`} className="text-blue-500 underline">
+              <a href={`/${locale}/team`} className="text-blue-500 underline">
                 here
               </a>
               .

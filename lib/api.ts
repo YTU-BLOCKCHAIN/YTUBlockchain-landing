@@ -14,6 +14,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718066507048_Pesonal%20Picture.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "Blockchain, Ethereum",
+    ClassLocation: "EEF111",
   },
   {
     date: "2024-07-13",
@@ -26,6 +27,7 @@ const dummyClasses = [
     githubLink: "https://github.com/instructor/repo",
 
     tech: "React, JavaScript",
+    ClassLocation: "EEF112",
   },
   {
     date: "2024-05-14",
@@ -37,6 +39,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718066507048_Pesonal%20Picture.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "Blockchain, Ethereum",
+    ClassLocation: "EEF113",
   },
   {
     date: "2024-06-04",
@@ -48,6 +51,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718075712286_YTUBC.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "React, JavaScript",
+    ClassLocation: "EEF114",
   },
   {
     date: "2024-05-03",
@@ -59,6 +63,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718066507048_Pesonal%20Picture.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "Blockchain, Ethereum",
+    ClassLocation: "EEF115",
   },
   {
     date: "2024-12-28",
@@ -70,6 +75,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718075712286_YTUBC.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "React, JavaScript",
+    ClassLocation: "EEF116",
   },
   {
     date: "2024-07-24",
@@ -81,6 +87,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718066507048_Pesonal%20Picture.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "Blockchain, Ethereum",
+    ClassLocation: "EEF117",
   },
   {
     date: "2024-08-04",
@@ -92,6 +99,7 @@ const dummyClasses = [
       "https://ytublockchain.s3.eu-central-1.amazonaws.com/uploads/1718075712286_YTUBC.png",
     githubLink: "https://github.com/instructor/repo",
     tech: "React, JavaScript",
+    ClassLocation: "EEF112",
   },
 ];
 
@@ -106,7 +114,7 @@ export const addClass = async (classData: any) => {
 export const fetchClasses = async () => {
   try {
     const response = await axios.get(
-      `https://${API_HOST}:${API_PORT}/api/classes`
+      `http://${API_HOST}:${API_PORT}/api/classes`
     );
     return response.data;
   } catch (error) {
