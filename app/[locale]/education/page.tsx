@@ -1,4 +1,4 @@
-import ScheduleComponent from "@/components/Schedule";
+import ScheduleComponent from "@/components/Schedule/Schedule";
 import Image from "next/image";
 import ClubLogo from "@/public/YTUBC.png";
 import EventImage from "@/public/event.png";

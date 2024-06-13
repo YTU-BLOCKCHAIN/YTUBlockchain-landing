@@ -10,3 +10,10 @@ export const addClass = async (classData: any) => {
   );
   return response.data;
 };
+
+export const fetchClasses = async () => {
+  const response = await axios.get(
+    `http://${API_HOST}:${API_PORT}/api/classes`
+  );
+  return response.data;
+};
