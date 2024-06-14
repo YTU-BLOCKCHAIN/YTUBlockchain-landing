@@ -86,9 +86,9 @@ const AddClassForm = () => {
   };
 
   return (
-    <div className=" p-8 bg-white dark:bg-zinc-800 shadow-md rounded-lg w-full mx-auto">
+    <div className="relative p-8 bg-white dark:bg-zinc-800 shadow-md rounded-lg w-full mx-auto">
       {loading && (
-        <span className="absolute w-full h-full bg-black bg-opacity-70 rounded-lg cursor-not-allowed" />
+        <span className="absolute w-full h-full bg-black bg-opacity-70 rounded-lg cursor-not-allowed left-0 top-0" />
       )}
 
       <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">

@@ -12,6 +12,7 @@ const LoginPage = () => {
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.split("/")[1];
+  const [inputError, setInputError] = useState<Boolean>(false);
 
   useEffect(() => {
     if (token) {
@@ -26,12 +27,18 @@ const LoginPage = () => {
       router.push(`/${locale}/team`);
     } catch (err) {
       setError("Invalid username or password");
+      setInputError(true);
+      setTimeout(() => setInputError(false), 800);
     }
   };
 
   return (
     <div className="sm:min-h-screen min-h-[90vh] p-4 flex items-center justify-center">
-      <div className="bg-white dark:bg-zinc-800 shadow-md rounded-lg p-8 max-w-md w-full">
+      <div
+        className={`bg-white dark:bg-zinc-800 shadow-md rounded-lg p-8 max-w-md w-full border-2 ${
+          inputError ? "border-red-500 shake" : "border-[#e2e8f000]"
+        } `}
+      >
         <div className="flex justify-center mb-6">
           <Image
             src="/YTUBC.png"
@@ -47,7 +54,7 @@ const LoginPage = () => {
         {token ? (
           <div className="text-center">
             <p className="text-green-500">
-              Already logged in. Redirecting to admin page...
+              logged in successfully. Redirecting to admin page...
             </p>
             <p>
               If you are not redirected automatically, click{" "}
@@ -60,7 +67,7 @@ const LoginPage = () => {
         ) : (
           <>
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className={`space-y-4 `}>
               <div>
                 <label
                   htmlFor="username"
