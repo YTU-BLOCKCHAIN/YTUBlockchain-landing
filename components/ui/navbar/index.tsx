@@ -172,7 +172,7 @@ const Navbar = () => {
             </Dropdown>
           ) : (
             <NavbarLink
-              navItem={{ href: basePath + "/login", textKey: "login" }}
+              navItem={{ href: "/login", textKey: "login" }}
               basePath={basePath}
               onClick={handleLinkClick}
             />
