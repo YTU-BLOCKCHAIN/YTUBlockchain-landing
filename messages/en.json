@@ -5,7 +5,43 @@
     "Content": "Content",
     "Doc": "Docs",
     "login": "Login",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "logOut": "Logout",
+    "goToDashboard": "Go to Dashboard"
+  },
+  "TeamPage": {
+    "addClass": "Add Class",
+    "editClass": "Edit Class",
+    "welcome": "Welcome to the Team Panel",
+    "welcomeMessage": "Management panel is used to manage your classes and events.",
+    "getStarted": "Click on Add Class to create a new class or Edit Class to manage existing classes.",
+    "back": "Back"
+  },
+  "AddClassForm": {
+    "addClass": "Add Class",
+    "date": "Date",
+    "time": "Time",
+    "duration": "Duration",
+    "topic": "Topic",
+    "instructor": "Instructor",
+    "classLocation": "Class Location",
+    "githubLink": "GitHub Link",
+    "tech": "Tech"
+  },
+  "EditClassForm": {
+    "editClass": "Edit Class",
+    "Classes": "Edit Classes",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "edit": "Edit",
+
+    "techPlaceholder": "e.g., JavaScript, React",
+    "githubLinkPlaceholder": "e.g., https://github.com/instructor/repo",
+    "classLocationPlaceholder": "e.g., EEF102",
+    "instructorPlaceholder": "e.g., Ahemd Murshed",
+    "topicPlaceholder": "e.g., Introduction to Blockchain",
+    "durationPlaceholder": "e.g., 2 hours"
   },
   "HomePage": {
     "welcome": "Welcome to Yildiz Blockchain",

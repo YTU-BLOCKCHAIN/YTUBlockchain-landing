@@ -157,7 +157,7 @@ const Navbar = () => {
                     className="text-gray-800 dark:text-gray-200"
                     onClick={handleLinkClick}
                   >
-                    Go to Dashboard
+                    {t("goToDashboard")}
                   </a>
                 </DropdownItem>
                 <DropdownItem
@@ -166,7 +166,7 @@ const Navbar = () => {
                   color="danger"
                   onClick={logout}
                 >
-                  Log Out
+                  {t("logOut")}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -262,7 +262,7 @@ const Navbar = () => {
                         className="text-gray-800 dark:text-gray-200"
                         onClick={handleLinkClick}
                       >
-                        Go to Dashboard
+                        {t("goToDashboard")}
                       </a>
                     </DropdownItem>
                     <DropdownItem
@@ -271,7 +271,7 @@ const Navbar = () => {
                       color="danger"
                       onClick={logout}
                     >
-                      Log Out
+                      {t("logOut")}
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>

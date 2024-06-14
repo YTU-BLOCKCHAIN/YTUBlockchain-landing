@@ -5,7 +5,42 @@
     "Content": "İçerik",
     "Doc": "Docs",
     "login": "Giriş Yap",
-    "dashboard": "Panel"
+    "dashboard": "Panel",
+    "logOut": "Çıkış Yap",
+    "goToDashboard": "Panel"
+  },
+  "TeamPage": {
+    "addClass": "Ders Ekle",
+    "editClass": "Dersi Düzenle",
+    "welcome": " Yönetim Paneline Hoşgeldiniz",
+    "welcomeMessage": "Yönetim paneli, derslerinizi ve etkinliklerinizi yönetmek için kullanılır.",
+    "getStarted": "Yeni bir ders oluşturmak için Ders Ekle'ye tıklayın veya mevcut dersleri yönetmek için Dersi Düzenle'ye tıklayın.",
+    "back": "Geri"
+  },
+  "AddClassForm": {
+    "addClass": "Ders Ekle",
+    "date": "Tarih",
+    "time": "Saat",
+    "duration": "Süre",
+    "topic": "Konu",
+    "instructor": "Eğitmen",
+    "classLocation": "Ders Yeri",
+    "githubLink": "Github Linki",
+    "tech": "Teknoloji"
+  },
+  "EditClassForm": {
+    "editClass": "Dersi Düzenle",
+    "Classes": "Dersi Düzenle",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "cancel": "İptal",
+    "edit": "Düzenle",
+    "techPlaceholder": "örn., JavaScript, React",
+    "githubLinkPlaceholder": "örn., https://github.com/instructor/repo",
+    "classLocationPlaceholder": "örn., EEF102",
+    "instructorPlaceholder": "örn., Ahmed Murshed",
+    "topicPlaceholder": "örn., Introduction to Blockchain",
+    "durationPlaceholder": "örn., 2 hours"
   },
   "HomePage": {
     "welcome": "Yildiz Blockchain'e Hoşgeldiniz",

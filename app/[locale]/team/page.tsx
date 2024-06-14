@@ -6,6 +6,7 @@ import { useAuth } from "../../../context/AuthContext";
 import AddClassForm from "../../../components/AddClassForm";
 import EditClassForm from "../../../components/EditClassForm";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const MovingBar = () => {
   return (
@@ -30,6 +31,7 @@ const TeamPage = () => {
   const pathname = usePathname();
   const locale = pathname.split("/")[1];
   const [activeTab, setActiveTab] = useState<"add" | "edit" | null>(null);
+  const t = useTranslations("TeamPage");
 
   const handleTabClick = (tab: "add" | "edit") => {
     setActiveTab(activeTab === tab ? null : tab);
@@ -61,7 +63,7 @@ const TeamPage = () => {
                 : "text-gray-500 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
             }`}
           >
-            Add Class
+            {t("addClass")}
           </button>
           {activeTab === "add" && <MovingBar />}
         </div>
@@ -76,7 +78,7 @@ const TeamPage = () => {
                 : "text-gray-500 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400"
             }`}
           >
-            Edit Class
+            {t("editClass")}
           </button>
           {activeTab === "edit" && <MovingBar />}
         </div>
@@ -84,15 +86,13 @@ const TeamPage = () => {
       {!activeTab && (
         <div className="text-center p-8">
           <h2 className="text-2xl font-bold mb-4 dark:text-white">
-            Welcome to the Team Panel
+            {t("welcome")}
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Please select an option above to either add a new class or edit an
-            existing class.
+            {t("welcomeMessage")}
           </p>
           <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Click on "Add Class" to create a new class or "Edit Class" to manage
-            existing classes.
+            {t("getStarted")}
           </p>
         </div>
       )}
@@ -105,7 +105,7 @@ const TeamPage = () => {
               className="mt-4 px-4 py-2 bg-gray-600 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400"
               onClick={() => setActiveTab(null)}
             >
-              Cancel
+              {t("back")}
             </button>
           </div>
         )}

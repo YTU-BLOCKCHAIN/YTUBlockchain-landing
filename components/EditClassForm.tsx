@@ -8,6 +8,7 @@ import ConfirmDeleteModal from "@/components/Common/ConfirmDeleteModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Class } from "@/types/types";
+import { useTranslations } from "next-intl";
 
 const EditClassForm: React.FC = () => {
   const [classes, setClasses] = useState<Class[]>([]);
@@ -16,6 +17,8 @@ const EditClassForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string>("");
   const [classToDelete, setClassToDelete] = useState<Class | null>(null);
+  const t = useTranslations("EditClassForm");
+  const r = useTranslations("AddClassForm");
 
   useEffect(() => {
     const getClasses = async () => {
@@ -119,7 +122,7 @@ const EditClassForm: React.FC = () => {
       {loading && !selectedClass && (
         <div className="space-y-6 h-screen">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
-            Edit Classes
+            {t("editClass")}
           </h2>
           {[...Array(8)].map((_, index) => (
             <div key={index} className="space-y-2">
@@ -129,13 +132,13 @@ const EditClassForm: React.FC = () => {
         </div>
       )}
       <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
-        Edit {selectedClass ? selectedClass.topic : "Classes"}
+        {selectedClass ? selectedClass.topic : t("Classes")}
       </h2>
       {error && <p className="text-red-500">{error}</p>}
       {selectedClass ? (
         <form onSubmit={handleSave} className="space-y-6">
           <FormField
-            label="Date"
+            label={r("date")}
             type="date"
             id="date"
             name="date"
@@ -144,7 +147,7 @@ const EditClassForm: React.FC = () => {
             required
           />
           <FormField
-            label="Time"
+            label={r("time")}
             type="time"
             id="time"
             name="time"
@@ -153,62 +156,62 @@ const EditClassForm: React.FC = () => {
             required
           />
           <FormField
-            label="Duration"
+            label={r("duration")}
             type="text"
             id="duration"
             name="duration"
             value={selectedClass.duration}
-            placeholder="e.g., 2 hours"
+            placeholder={t("durationPlaceholder")}
             onChange={handleInputChange}
             required
           />
           <FormField
-            label="Topic"
+            label={r("topic")}
             type="text"
             id="topic"
             name="topic"
             value={selectedClass.topic}
-            placeholder="e.g., Introduction to Blockchain"
+            placeholder={t("topicPlaceholder")}
             onChange={handleInputChange}
             required
           />
           <FormField
-            label="Instructor"
+            label={r("instructor")}
             type="text"
             id="instructor"
             name="instructor"
             value={selectedClass.instructor}
-            placeholder="e.g., John Doe"
+            placeholder={t("instructorPlaceholder")}
             onChange={handleInputChange}
             required
           />
           <FormField
-            label="Class Location"
+            label={r("classLocation")}
             type="text"
             id="ClassLocation"
             name="ClassLocation"
             value={selectedClass.ClassLocation || ""}
-            placeholder="e.g., EEF102"
+            placeholder={t("classLocationPlaceholder")}
             onChange={handleInputChange}
             required
           />
           <FormField
-            label="GitHub Link"
+            label={r("githubLink")}
             type="url"
             id="githubLink"
             name="githubLink"
             value={selectedClass.githubLink}
-            placeholder="e.g., https://github.com/instructor/repo"
+            placeholder={t("githubLinkPlaceholder")}
             onChange={handleInputChange}
             required
           />
           <FormField
-            label="Tech"
+            label={r("tech")}
             type="text"
             id="tech"
             name="tech"
             value={selectedClass.tech}
-            placeholder="e.g., JavaScript, React"
+            placeholder={t("techPlaceholder")}
             onChange={handleInputChange}
             required
           />
@@ -218,25 +221,21 @@ const EditClassForm: React.FC = () => {
               className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1  bg-indigo-600 text-white font-bold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 flex justify-center items-center"
               disabled={loading}
             >
-              {loading ? (
-                <ClipLoader color="#ffffff" size={20} />
-              ) : (
-                "Save Changes"
-              )}
+              {loading ? <ClipLoader color="#ffffff" size={20} /> : t("save")}
             </button>
             <button
               type="button"
               className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1  ml-4 bg-red-600 text-white font-bold rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 flex justify-center items-center"
               onClick={() => handleDeleteClick(selectedClass!)}
             >
-              {loading ? <ClipLoader color="#ffffff" size={20} /> : "Delete"}
+              {loading ? <ClipLoader color="#ffffff" size={20} /> : t("delete")}
             </button>
             <button
               type="button"
               className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1 ml-4 bg-gray-600 text-white font-bold rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400 flex justify-center items-center"
               onClick={handleCancelEdit}
             >
-              Cancel
+              {t("cancel")}
             </button>
           </div>
         </form>
@@ -255,13 +254,13 @@ const EditClassForm: React.FC = () => {
                   className="text-sm sm:text-md bg-indigo-600 text-white sm:px-4 sm:py-2 px-2 py-1 rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                   onClick={() => handleEditClick(cls)}
                 >
-                  Edit
+                  {t("edit")}
                 </button>
                 <button
                   className="text-sm sm:text-md bg-red-600 text-white sm:px-4 sm:py-2 px-2 py-1 rounded-md shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400"
                   onClick={() => handleDeleteClick(cls)}
                 >
-                  Delete
+                  {t("delete")}
                 </button>
               </div>
             </li>

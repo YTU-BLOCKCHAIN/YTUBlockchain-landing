@@ -8,6 +8,7 @@ import { ClipLoader } from "react-spinners";
 import FormField from "./Forms/FormField";
 import ImageUpload from "./Forms/ImageUpload";
 import ErrorMessage from "./Common/ErrorMessage";
+import { useTranslations } from "next-intl";
 
 const AddClassForm = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,8 @@ const AddClassForm = () => {
   const [error, setError] = useState<string | null>(null);
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-
+  const t = useTranslations("AddClassForm");
+  const r = useTranslations("EditClassForm");
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -90,12 +92,12 @@ const AddClassForm = () => {
       )}
 
       <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
-        Add New Class
+        {t("addClass")}
       </h2>
       {error && <ErrorMessage error={error} />}
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormField
-          label="Date"
+          label={t("date")}
           type="date"
           id="date"
           name="date"
@@ -104,7 +106,7 @@ const AddClassForm = () => {
           required
         />
         <FormField
-          label="Time"
+          label={t("time")}
           type="time"
           id="time"
           name="time"
@@ -113,61 +115,61 @@ const AddClassForm = () => {
           required
         />
         <FormField
-          label="Duration"
+          label={t("duration")}
           type="text"
           id="duration"
           name="duration"
-          placeholder="e.g., 2 hours"
+          placeholder={r("durationPlaceholder")}
           value={formData.duration}
           onChange={handleChange}
           required
         />
         <FormField
-          label="Topic"
+          label={t("topic")}
           type="text"
           id="topic"
           name="topic"
-          placeholder="e.g., Introduction to Blockchain"
+          placeholder={r("topicPlaceholder")}
           value={formData.topic}
           onChange={handleChange}
           required
         />
         <FormField
-          label="Instructor"
+          label={t("instructor")}
           type="text"
           id="instructor"
           name="instructor"
-          placeholder="e.g., John Doe"
+          placeholder={r("instructorPlaceholder")}
           value={formData.instructor}
           onChange={handleChange}
           required
         />
         <FormField
-          label="Class Location"
+          label={t("ClassLocation")}
           type="text"
           id="ClassLocation"
           name="ClassLocation"
-          placeholder="e.g., EEF102"
+          placeholder={r("classLocationPlaceholder")}
           value={formData.ClassLocation}
           onChange={handleChange}
           required
         />
         <FormField
-          label="GitHub Link"
+          label={t("githubLink")}
           type="url"
           id="githubLink"
           name="githubLink"
-          placeholder="e.g., https://github.com/instructor/repo"
+          placeholder={r("githubLinkPlaceholder")}
           value={formData.githubLink}
           onChange={handleChange}
           required
         />
         <FormField
-          label="Tech"
+          label={t("tech")}
           type="text"
           id="tech"
           name="tech"
-          placeholder="e.g., JavaScript, React"
+          placeholder={r("techPlaceholder")}
           value={formData.tech}
           onChange={handleChange}
           required
@@ -182,7 +184,7 @@ const AddClassForm = () => {
           className="w-full py-2 px-4 bg-indigo-600 text-white font-bold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 flex justify-center items-center"
           disabled={loading}
         >
-          {loading ? <ClipLoader color="#ffffff" size={20} /> : "Add Class"}
+          {loading ? <ClipLoader color="#ffffff" size={20} /> : t("addClass")}
         </button>
       </form>
       <ToastContainer position="bottom-right" />
