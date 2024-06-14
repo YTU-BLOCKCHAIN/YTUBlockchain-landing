@@ -1,11 +1,16 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface FooterProps {
   locale: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ locale }) => {
+  const pathname = usePathname();
+  const basePath = pathname.split("/").slice(0, 2).join("/");
+
   return (
     <div
       className="relative h-[300px]"
@@ -17,13 +22,13 @@ const Footer: React.FC<FooterProps> = ({ locale }) => {
             <div className="flex flex-col md:flex-row gap-10">
               <div className="flex flex-col gap-2">
                 <h3 className="mb-2 uppercase">Navigation</h3>
-                <Link href={locale + "/"}>
+                <Link href={"/"}>
                   <p className="hover:underline">Home</p>
                 </Link>
-                <Link href={locale + "/events"}>
+                <Link href={`${basePath}/events`}>
                   <p className="hover:underline">Events</p>
                 </Link>
-                <Link href={locale + "/education"}>
+                <Link href={`${basePath}/education`}>
                   <p className="hover:underline">Education</p>
                 </Link>
               </div>

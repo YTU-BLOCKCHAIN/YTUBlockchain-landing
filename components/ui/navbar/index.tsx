@@ -26,7 +26,7 @@ const linkVariants = {
 };
 
 const navData = [
-  { href: "/", textKey: "Events", basePath: false },
+  { href: "/events", textKey: "Events", basePath: false },
   { href: "/education", textKey: "Education", basePath: true },
   { href: "/", textKey: "Content", basePath: false },
 ];
@@ -48,7 +48,7 @@ const NavbarLink = ({
       whileHover="hover"
     >
       <Link
-        href={navItem.basePath ? `${basePath}${navItem.href}` : navItem.href}
+        href={`${basePath}/${navItem.href}`}
         className={`relative group text-gray-800 dark:text-gray-200 ${
           navItem.external
             ? "text-sm bg-gray-200 dark:bg-gray-700 rounded px-2 py-1"
