@@ -118,6 +118,9 @@ const EditClassForm: React.FC = () => {
     <div className="bg-white dark:bg-zinc-800 shadow-md rounded-lg p-8">
       {loading && !selectedClass && (
         <div className="space-y-6 h-screen">
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
+            Edit Classes
+          </h2>
           {[...Array(8)].map((_, index) => (
             <div key={index} className="space-y-2">
               <div className="h-11 bg-gray-300 dark:bg-zinc-700 rounded animate-pulse"></div>
@@ -212,7 +215,7 @@ const EditClassForm: React.FC = () => {
           <div className="flex justify-between">
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-indigo-600 text-white font-bold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 flex justify-center items-center"
+              className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1  bg-indigo-600 text-white font-bold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 flex justify-center items-center"
               disabled={loading}
             >
               {loading ? (
@@ -223,14 +226,14 @@ const EditClassForm: React.FC = () => {
             </button>
             <button
               type="button"
-              className="w-full py-2 px-4 ml-4 bg-red-600 text-white font-bold rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 flex justify-center items-center"
+              className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1  ml-4 bg-red-600 text-white font-bold rounded-md shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 flex justify-center items-center"
               onClick={() => handleDeleteClick(selectedClass!)}
             >
               {loading ? <ClipLoader color="#ffffff" size={20} /> : "Delete"}
             </button>
             <button
               type="button"
-              className="w-full py-2 px-4 ml-4 bg-gray-600 text-white font-bold rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400 flex justify-center items-center"
+              className="w-full text-sm sm:text-md sm:px-4 sm:py-2 px-2 py-1 ml-4 bg-gray-600 text-white font-bold rounded-md shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400 flex justify-center items-center"
               onClick={handleCancelEdit}
             >
               Cancel
@@ -242,20 +245,20 @@ const EditClassForm: React.FC = () => {
           {classes.map((cls) => (
             <li
               key={cls._id}
-              className="bg-gray-100 dark:bg-zinc-700 p-4 rounded-md flex justify-between items-center shadow-md"
+              className="text-sm sm:text-lg bg-gray-100 dark:bg-zinc-700 p-4 rounded-md flex justify-between items-center shadow-md flex-col sm:flex-row gap-y-2"
             >
               <span className="text-gray-900 dark:text-gray-100 font-medium">
                 {cls.topic} - {cls.date}
               </span>
               <div className="flex space-x-2">
                 <button
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
+                  className="text-sm sm:text-md bg-indigo-600 text-white sm:px-4 sm:py-2 px-2 py-1 rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                   onClick={() => handleEditClick(cls)}
                 >
                   Edit
                 </button>
                 <button
-                  className="bg-red-600 text-white px-4 py-2 rounded-md shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400"
+                  className="text-sm sm:text-md bg-red-600 text-white sm:px-4 sm:py-2 px-2 py-1 rounded-md shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400"
                   onClick={() => handleDeleteClick(cls)}
                 >
                   Delete

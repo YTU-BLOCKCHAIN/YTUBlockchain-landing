@@ -23,3 +23,24 @@ body {
 .shake {
   animation: shake 0.5s;
 }
+
+.selected-tab {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-glow {
+  position: absolute;
+  top: 50%;
+  bottom: -2px;
+  left: -8px;
+  right: -8px;
+  border-radius: 1rem;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  filter: blur(8px);
+  z-index: -1;
+}
