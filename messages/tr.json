@@ -9,6 +9,11 @@
     "logOut": "Çıkış Yap",
     "goToDashboard": "Panel"
   },
+  "NotFoundPage": {
+    "404": "404 - Sayfa Bulunamadı",
+    "pageNotFound": "Hata! Aradığınız sayfa mevcut değil.",
+    "goHome": "Ana Sayfaya Dön"
+  },
   "TeamPage": {
     "addClass": "Ders Ekle",
     "editClass": "Dersi Düzenle",

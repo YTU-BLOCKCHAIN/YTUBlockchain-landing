@@ -9,6 +9,11 @@
     "logOut": "Logout",
     "goToDashboard": "Go to Dashboard"
   },
+  "NotFoundPage": {
+    "404": "404 - Page Not Found",
+    "pageNotFound": "Oops! The page you are looking for does not exist.",
+    "goHome": "Go to Home"
+  },
   "TeamPage": {
     "addClass": "Add Class",
     "editClass": "Edit Class",

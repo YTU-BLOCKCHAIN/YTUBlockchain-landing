@@ -1,25 +1,25 @@
+"use client";
 import { useTranslations } from "next-intl";
 
-// Note that `app/[locale]/[...rest]/page.tsx`
-// is necessary for this page to render.
+import Link from "next/link";
 
-export default function NotFoundPage() {
-  const t = useTranslations("NotFound");
+const NotFoundPage = () => {
+  const t = useTranslations("NotFoundPage");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center bg-gray-100 dark:bg-gray-900">
-      <h1 className="text-6xl font-extrabold text-gray-800 dark:text-gray-100 mb-4">
-        {t("404")}
-      </h1>
-      <p className="text-xl text-gray-600 dark:text-gray-400 max-w-lg">
-        {t("description")}
-      </p>
-      <a
-        href="/"
-        className="mt-8 px-6 py-3 bg-blue-600 text-white text-lg rounded-md hover:bg-blue-700 transition-colors"
-      >
-        {t("home")}
-      </a>
-    </div>
+    <main className="flex min-h-[90vh] flex-col items-center justify-center  p-4">
+      <div className="text-center mt-16 p-8 ">
+        <h1 className="text-5xl font-extrabold text-blue-600">{t("404")}</h1>
+        <p className="my-6 text-xl text-gray-700">{t("pageNotFound")}</p>
+
+        <Link href="/">
+          <p className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 transition">
+            {t("goHome")}
+          </p>
+        </Link>
+      </div>
+    </main>
   );
-}
+};
+
+export default NotFoundPage;
