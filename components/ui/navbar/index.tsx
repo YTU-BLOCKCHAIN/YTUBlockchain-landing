@@ -142,7 +142,7 @@ const Navbar = () => {
               onClick={handleLinkClick}
             />
           ))}
-          {isLoggedIn ? (
+          {isLoggedIn && (
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="bordered">
@@ -170,12 +170,6 @@ const Navbar = () => {
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-          ) : (
-            <NavbarLink
-              navItem={{ href: "/login", textKey: "login" }}
-              basePath={basePath}
-              onClick={handleLinkClick}
-            />
           )}
 
           <Link
@@ -247,7 +241,7 @@ const Navbar = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.2, delay: 0.4 }}
             >
-              {isLoggedIn ? (
+              {isLoggedIn && (
                 <Dropdown>
                   <DropdownTrigger>
                     <Button variant="bordered">
@@ -275,12 +269,6 @@ const Navbar = () => {
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-              ) : (
-                <NavbarLink
-                  navItem={{ href: basePath + "/login", textKey: "login" }}
-                  basePath={basePath}
-                  onClick={handleLinkClick}
-                />
               )}
               <Link
                 href="https://www.notion.so/your-notion-page"
