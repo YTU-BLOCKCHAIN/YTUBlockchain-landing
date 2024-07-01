@@ -9,6 +9,10 @@
     "logOut": "Logout",
     "goToDashboard": "Go to Dashboard"
   },
+  "WhoAreWe": {
+    "whoAreWe": "Who Are We?",
+    "description1": "YTU Blockchain community was founded in 2022 at Yıldız Technical University. Since its establishment, we have been a community that provides opportunities for those who are interested in these areas, primarily blockchain and Web3 ecosystems, and want to improve themselves. While we spend almost every day actively, especially with the trainings we provide and the events we organize, we are expanding our family day by day, learning and producing together on this path we started as a nuclear family."
+  },
   "NotFoundPage": {
     "404": "404 - Page Not Found",
     "pageNotFound": "Oops! The page you are looking for does not exist.",

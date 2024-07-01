@@ -9,6 +9,10 @@
     "logOut": "Çıkış Yap",
     "goToDashboard": "Panel"
   },
+  "WhoAreWe": {
+    "whoAreWe": "Biz Kimiz?",
+    "description1": "YTU Blockchain topluluğu, 2022 yılında Yıldız teknik üniversitesinde kuruldu. Kurulduğu günden bu yana, blockchain ve Web3 ekosistemleri öncelikli olmak üzere bu alanlara ilgili ve kendini geliştirmek isteyenlere fırsat tanıyan bir topluluğuz. Verdiğimiz eğitimler, organize ettiğimiz etkinlikler başta olmak üzere neredeyse her günümüzü aktif geçirirken, çekirdek bir aile olarak başladığımız bu yolda gün geçtikçe ailemizi genişletiyor, beraber öğrenip beraber üretiyoruz."
+  },
   "NotFoundPage": {
     "404": "404 - Sayfa Bulunamadı",
     "pageNotFound": "Hata! Aradığınız sayfa mevcut değil.",
