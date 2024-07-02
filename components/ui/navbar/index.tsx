@@ -28,7 +28,7 @@ const linkVariants = {
 const navData = [
   { href: "/events", textKey: "Events", basePath: false },
   { href: "/education", textKey: "Education", basePath: true },
-  { href: "/", textKey: "Content", basePath: false },
+  { href: "/content", textKey: "Content", basePath: false },
 ];
 
 const NavbarLink = ({
@@ -86,7 +86,7 @@ const Navbar = () => {
             setIsVisible(true);
           }
         } else {
-          setIsVisible(true); // Always show when scroll is less than 100px
+          setIsVisible(true);
         }
         setLastScrollY(currentScrollY);
       }

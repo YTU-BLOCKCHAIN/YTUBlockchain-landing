@@ -21,7 +21,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`flex flex-col ${inter.className} dark:bg-zinc-900 bg-gray-100`}
+        className={`flex flex-col  ${inter.className}  dark:bg-zinc-900 bg-gray-100`}
       >
         <NextIntlClientProvider messages={messages}>
           <NextUIProvider>
