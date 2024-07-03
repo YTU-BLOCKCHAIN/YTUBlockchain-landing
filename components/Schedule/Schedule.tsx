@@ -61,14 +61,21 @@ const Schedule: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-6xl mx-auto overflow-x-auto"
+        className="w-full overflow-x-auto"
       >
+        <h2 className="text-2xl font-bold text-center bg-white rounded-t-2xl py-2 dark:bg-[#27272A] border-t-[1px] border-r border-l dark:border-[#3F3F46] border-[#D4D4D8]">
+          Education Schedule
+        </h2>
         <FilterButtons
           filter={filter}
           onFilterChange={handleFilterChange}
           t={t}
         />
-        <ClassTable classes={filteredClasses} locale={locale} t={t} />
+        <ClassTable
+          classes={filteredClasses}
+          locale={locale}
+          t={t}
+        />
       </motion.div>
     </div>
   );

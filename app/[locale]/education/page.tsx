@@ -1,43 +1,15 @@
 import ScheduleComponent from "@/components/Schedule/Schedule";
-import Image from "next/image";
-import ClubLogo from "@/public/YTUBC.png";
-import EventImage from "@/public/event.png";
+import React from "react";
+import Header from "./components/header";
+import EventsComp from "./components/EventsComp";
+
 const page = () => {
   return (
     <div className=" text-gray-900 dark:text-white">
-      {/* Hero Section */}
-      <section className="relative bg-[#050259] text-white py-16">
-        <div className="absolute inset-0 opacity-30">
-          <Image
-            src={EventImage}
-            alt="Blockchain"
-            fill
-            object-fit="cover"
-            quality={75}
-          />
-        </div>
-        <div className="relative container mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">
-            Welcome to YTU Blockchain Education
-          </h1>
-          <p className="text-lg mb-8">
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <Image
-            src={ClubLogo}
-            alt="Club Logo"
-            width={100}
-            height={100}
-            className="mx-auto"
-          />
-        </div>
-      </section>
+      <Header />
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
-        {/* Introduction Section */}
-        <section className="mb-12 text-center">
+        {/* <section className="mb-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Instructions</h2>
           <p className="text-lg">
             Welcome to the YTU Blockchain Uni Club! Follow these steps to get
@@ -69,17 +41,16 @@ const page = () => {
               assistance, reach out to us at ytublockchain@ytu.edu.tr.
             </li>
           </ol>
-        </section>
+        </section> */}
 
-        {/* Schedule Section */}
-        <section id="schedule" className="mb-12">
-          <h2 className="text-2xl font-bold text-center mb-6">
-            Education Schedule
-          </h2>
+        <section
+          id="schedule"
+          className="mb-12 max-w-7xl mx-auto"
+        >
           <ScheduleComponent />
+          <EventsComp />
         </section>
 
-        {/* Get Involved Section */}
         <section
           id="involvement"
           className="bg-gray-200 dark:bg-gray-800 py-12 px-4 rounded-xl shadow-lg"
@@ -116,8 +87,10 @@ const page = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="py-12 text-center">
+        <section
+          id="contact"
+          className="py-12 text-center"
+        >
           <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
           <p className="text-lg mb-4">
             Have questions or want to learn more? Reach out to us at:
@@ -128,7 +101,6 @@ const page = () => {
           </p>
         </section>
 
-        {/* Map Section */}
         <section className="py-12">
           <h2 className="text-2xl font-bold text-center mb-6">Our Location</h2>
           <div className="relative h-96">
