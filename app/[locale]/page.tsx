@@ -4,8 +4,6 @@ import TwitterFeed from "@/components/Common/TwitterFeed";
 import Hero from "@/components/Hero";
 import IntroductionSection from "@/components/content/IntroductionSection";
 
-// import VideoSection from "@/components/VideoSection";
-
 type Props = {
   params: { locale: string };
 };
@@ -21,9 +19,10 @@ export default function Index({ params: { locale } }: Props) {
         <div className="text-center my-16">
           <h1 className="text-5xl font-extrabold">{t("welcome")}</h1>
         </div>
+        <hr className="my-8 border-t border-gray-300 dark:border-gray-700 rounded-full" />
+
         <IntroductionSection />
-        <Hero />
-        {/* <VideoSection /> */}
+        {/* <Hero /> */}
         <TwitterFeed />
       </div>
     </main>
