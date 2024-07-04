@@ -26,9 +26,9 @@ const linkVariants = {
 };
 
 const navData = [
-  { href: "/events", textKey: "Events", basePath: false },
+  { href: "/", textKey: "HomePage", basePath: false },
   { href: "/education", textKey: "Education", basePath: true },
-  { href: "/content", textKey: "Content", basePath: false },
+  // { href: "/content", textKey: "Content", basePath: false },
 ];
 
 const NavbarLink = ({
