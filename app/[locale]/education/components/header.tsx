@@ -4,8 +4,8 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="relative dark:bg-[#1D1D20]  bg-[#D9DBE0] overflow-hidden rounded-b-[64px]">
-      <div className=" relative max-w-7xl mx-auto py-16 px-8">
+    <div className="relative dark:bg-[#1D1D20]  bg-[#D9DBE0] overflow-hidden rounded-b-[64px] -mt-28">
+      <div className=" relative max-w-7xl mx-auto py-16 px-8 mt-24">
         <h1 className="md:text-4xl text-xl font-bold text-center mb-8">
           Welcome to YTU Blockchain Events
         </h1>

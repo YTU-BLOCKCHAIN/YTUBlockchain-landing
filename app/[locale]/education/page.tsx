@@ -9,40 +9,6 @@ const page = () => {
       <Header />
 
       <main className="container mx-auto px-4 py-12">
-        {/* <section className="mb-12 text-center">
-          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
-          <p className="text-lg">
-            Welcome to the YTU Blockchain Uni Club! Follow these steps to get
-            the most out of our educational offerings:
-          </p>
-          <ol className="list-decimal list-inside text-lg text-left max-w-2xl mx-auto mt-4">
-            <li className="mb-2">
-              <strong>Register for Classes:</strong> Sign up for upcoming
-              classes through our website to ensure your spot.
-            </li>
-            <li className="mb-2">
-              <strong>Join Our Meetings:</strong> Attend our weekly meetings to
-              stay updated on the latest blockchain trends and club activities.
-            </li>
-            <li className="mb-2">
-              <strong>Participate in Workshops:</strong> Engage in hands-on
-              workshops to gain practical experience with blockchain technology.
-            </li>
-            <li className="mb-2">
-              <strong>Collaborate on Projects:</strong> Work with fellow club
-              members on exciting blockchain projects and initiatives.
-            </li>
-            <li className="mb-2">
-              <strong>Stay Connected:</strong> Follow our social media channels
-              and join our mailing list to receive updates and announcements.
-            </li>
-            <li>
-              <strong>Contact Us:</strong> If you have any questions or need
-              assistance, reach out to us at ytublockchain@ytu.edu.tr.
-            </li>
-          </ol>
-        </section> */}
-
         <section
           id="schedule"
           className="mb-12 max-w-7xl mx-auto"
