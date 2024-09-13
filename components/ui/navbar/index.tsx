@@ -79,7 +79,7 @@ const Navbar = () => {
     const handleScroll = () => {
       if (typeof window !== "undefined") {
         const currentScrollY = window.scrollY;
-        if (currentScrollY > 100) {
+        if (currentScrollY > 70) {
           if (currentScrollY > lastScrollY) {
             setIsVisible(false);
           } else {
@@ -101,9 +101,9 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isVisible) {
-      gsap.to(".navbar", { y: 0, duration: 0.5, ease: "power1.inOut" });
+      gsap.to(".navbar", { y: 0, duration: 0.4, ease: "power1.inOut" });
     } else {
-      gsap.to(".navbar", { y: "-100%", duration: 0.5, ease: "power1.inOut" });
+      gsap.to(".navbar", { y: "-100%", duration: 0.4, ease: "power1.inOut" });
     }
   }, [isVisible]);
 
@@ -118,8 +118,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex border-b border-gray-300 bg-gradient-to-b from-zinc-200 to-[#d1d5dbce] backdrop-blur-sm dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit p-4 md:px-12 px-4">
-      <div className="flex flex-row justify-between w-full">
+    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex  px-24 pt-2">
+      <div className="flex flex-row bg-[#F3F4F6] dark:bg-[#18181B] justify-between w-full border-2 border-zinc-200  dark:border-neutral-800 p-4 md:px-12 rounded-xl">
         <Link
           href={`${basePath}`}
           className="flex items-center"

@@ -28,7 +28,7 @@ export default async function LocaleLayout({
             <ThemeProvider attribute="class">
               <AuthProvider>
                 <NavBar />
-                <div className="my-[78px]">{children}</div>
+                <div className="pt-28">{children}</div>
                 <Footer locale={locale} />
               </AuthProvider>
             </ThemeProvider>
