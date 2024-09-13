@@ -28,7 +28,7 @@ const linkVariants = {
 const navData = [
   { href: "/", textKey: "HomePage", basePath: false },
   { href: "/education", textKey: "Education", basePath: true },
-  // { href: "/content", textKey: "Content", basePath: false },
+  { href: "/blog", textKey: "Blogs", basePath: false },
 ];
 
 const NavbarLink = ({
@@ -118,7 +118,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed z-10 w-full items-center justify-between font-mono text-sm lg:flex  px-24 pt-2">
+    <div className="navbar fixed z-20 w-full items-center justify-between font-mono text-sm lg:flex px-4 sm:px-8 pt-2">
       <div className="flex flex-row bg-[#F3F4F6] dark:bg-[#18181B] justify-between w-full border-2 border-zinc-200  dark:border-neutral-800 p-4 md:px-12 rounded-xl">
         <Link
           href={`${basePath}`}
