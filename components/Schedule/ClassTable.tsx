@@ -14,7 +14,10 @@ const ClassTable: React.FC<{
       {classes.map((cls, index) => (
         <React.Fragment key={index}>
           <tr className="border-b dark:border-zinc-600 border-zinc-300">
-            <td className="dark:bg-zinc-700 bg-zinc-300 p-4" colSpan={2}>
+            <td
+              className="dark:bg-zinc-700 bg-zinc-300 p-4"
+              colSpan={2}
+            >
               {format(new Date(cls.date), "EEE, MMMM d", { locale })}
             </td>
           </tr>

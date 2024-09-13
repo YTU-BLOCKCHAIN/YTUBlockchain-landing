@@ -44,8 +44,11 @@ const ClassRow: React.FC<{ cls: Class }> = ({ cls }) => {
   return (
     <tr className="border-b dark:border-zinc-700 border-zinc-300 ">
       <td className="px-4 py-2 border-r dark:border-zinc-600 border-zinc-300 text-center  w-1/4">
-        <div className="text-sm dark:text-gray-400 text-gray-600">
-          {cls.time} - {cls.duration} -{" "}
+        <div className="text-xs sm:text-sm dark:text-gray-400 text-gray-600 flex flex-col sm:flex-row sm:items-center sm:gap-2">
+          <span>{cls.time}</span>
+          <span className="hidden sm:inline-block">-</span>
+          <span>{cls.duration}</span>
+          <span className="hidden sm:inline-block">-</span>
           <span className="font-bold">
             {cls.ClassLocation ? cls.ClassLocation : "EEF104"}
           </span>
